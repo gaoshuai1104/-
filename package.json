@@ -17,6 +17,7 @@
     "three-fbx-loader": "^1.0.3",
     "three-obj-mtl-loader": "^1.0.3",
     "three-orbitcontrols": "^2.102.2",
+    "tween": "^0.9.0",
     "vue": "^2.6.6",
     "vue-3d-model": "^1.1.1",
     "vue-router": "^3.0.1",

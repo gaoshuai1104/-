@@ -1,50 +1,61 @@
 <template>
 <body>
   <div id="info"></div>
-  </body>
+</body>
 </template>
 
 <script>
-import * as THREE from '../build/three.module.js';
+// import * as THREE from '../build/three.module.js';
+import * as THREE from 'three'
+import Stats from "./jsm/libs/stats.module.js"
 import { OrbitControls } from "./jsm/controls/OrbitControls.js"
 import { FBXLoader } from "./jsm/loaders/FBXLoader.js"
-import Stats from "./jsm/libs/stats.module.js"
+
 export default {
   data() {
     return {
-      publicPath: process.env.BASE_URL,
+      // publicPath: process.env.BASE_URL,
+      container:null,
       stats: null,
       controls: null,
       camera: null,
       scene: null,
       renderer: null,
-      light: null
+      light: null,
+      mixer:null,
     };
   },
   mounted() {
     this.init();
     this.animate();
   },
+  
   methods: {
+     
     init() {
       let container = document.createElement( 'div' )
       document.body.appendChild( container );
       //相机 控制距离实现远近
       this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-      this.camera.position.set(100, 200, 300);
+      this.camera.position.set(400, 400, 400);
 
 //舞台（场景）
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color( 0xa0a0a0 );
-        this.scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
+        // this.scene.background = new THREE.Color( 0xa0a0a0 );
+        // this.scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
 
 
       this.light = new THREE.HemisphereLight(0xffffff, 0x444444);
-      this.light.position.set(0, 1, 0);
+      this.light.position.set(0, 200, 0);
       this.scene.add(this.light);
 
       this.light = new THREE.DirectionalLight(0xffffff);
-      this.light.position.set(0, 1, 0);
+      this.light.position.set(0, 200, 100);
+      this.light.castShadow = true;
+			this.light.shadow.camera.top = 180;
+			this.light.shadow.camera.bottom = - 100;
+			this.light.shadow.camera.left = - 120;
+			this.light.shadow.camera.right = 120;
       this.scene.add(this.light);
 
       // grid
@@ -53,12 +64,27 @@ export default {
 
       // stats
       this.stats = new Stats();
-      container.appendChild( this.stats.dom);
+      // container.appendChild( this.stats.dom);
 
       // model
       var loader = new FBXLoader();
       loader.load("static/models/collada/elf/PGY555.fbx", function(object) {
-       this.scene.add(object);
+      //  this.scene.add(object);
+       mixer = new THREE.AnimationMixer(object);
+ 
+        var action = mixer.clipAction(object.animations[0]);
+        action.play();
+ 
+        object.traverse(function (child) {
+ 
+            if (child.isMesh) {
+ 
+                child.castShadow = true;
+                child.receiveShadow = true;
+ 
+            }
+            })
+            this.scene.add( object )
       });
       console.log(this.scene)
       this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -81,14 +107,14 @@ export default {
     },
     animate() {
       requestAnimationFrame(this.animate);
-
       this.renderer.render(this.scene, this.camera);
 
       this.stats.update();
+
     }
   }
 };
 </script>
-<style lang="less" scoped>
-@import 'main.css';
+<style>
+@import "main.css";
 </style>
