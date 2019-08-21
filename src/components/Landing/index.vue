@@ -42,7 +42,7 @@ export default {
 .left {
   img {
     width: 60%;
-    height: 100%;
+    height: 98%;
     position: absolute;
     left: 0;
   }

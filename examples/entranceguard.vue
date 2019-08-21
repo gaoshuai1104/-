@@ -12,7 +12,6 @@ import Stats from "./jsm/libs/stats.module.js"
 export default {
   data() {
     return {
-      publicPath: process.env.BASE_URL,
       stats: null,
       controls: null,
       camera: null,
