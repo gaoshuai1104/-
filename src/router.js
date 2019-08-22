@@ -33,6 +33,24 @@ export default new Router({
       }
     },
     {
+      path: '/Apply',
+      name: 'Apply',
+      component: () => import('./views/purchasingManagement/Apply.vue'),
+      meta:{
+        keepAlive: true,
+        title:'申请管理',
+      }
+    },
+    {
+      path: '/Order',
+      name: 'Order',
+      component: () => import('./views/purchasingManagement/Order.vue'),
+      meta:{
+        keepAlive: true,
+        title:'订单管理',
+      }
+    },
+    {
       path: '/property',
       name: 'property',
       component: () => import('./views/Management/property.vue'),

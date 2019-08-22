@@ -5,11 +5,10 @@
 </template>
 
 <script>
-// import * as THREE from '../build/three.module.js';
 import * as THREE from 'three'
 import Stats from "./jsm/libs/stats.module.js"
 import { OrbitControls } from "./jsm/controls/OrbitControls.js"
-import { FBXLoader } from "./jsm/loaders/FBXLoader.js"
+import { GLTFLoader } from "./jsm/loaders/GLTFLoader.js"
 
 export default {
   data() {
@@ -37,14 +36,13 @@ export default {
       document.body.appendChild( container );
       //相机 控制距离实现远近
       this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-      this.camera.position.set(400, 400, 400);
+      // 载入场景的位置
+      this.camera.position.set(-1.5, 1.5, 6.5);
 
 //舞台（场景）
         this.scene = new THREE.Scene();
         // this.scene.background = new THREE.Color( 0xa0a0a0 );
-        // this.scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
-
-
+        // this.scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );    
       this.light = new THREE.HemisphereLight(0xffffff, 0x444444);
       this.light.position.set(0, 200, 0);
       this.scene.add(this.light);
@@ -59,7 +57,7 @@ export default {
       this.scene.add(this.light);
 
       // grid
-      var gridHelper = new THREE.GridHelper(28, 28, 0x303030, 0x303030);
+      let gridHelper = new THREE.GridHelper(28, 28, 0x303030, 0x303030);
       this.scene.add(gridHelper);
 
       // stats
@@ -67,24 +65,26 @@ export default {
       // container.appendChild( this.stats.dom);
 
       // model
-      var loader = new FBXLoader();
-      loader.load("static/models/collada/elf/PGY555.fbx", function(object) {
-      //  this.scene.add(object);
-       mixer = new THREE.AnimationMixer(object);
+            const material = new THREE.MeshBasicMaterial();
+      const mesh = new THREE.Mesh(material );  
+      let loader = new FBXLoader();
+      loader.load("static/models/collada/elf/PGY555.fbx", function(mesh) {
+        console.log(123)
+       scene.add(mesh);
+//        mixer = new THREE.AnimationMixer(object);
+//  object.scale.multiplyScalar(.1);
+//         var action = mixer.clipAction(object.animations[0]);
+//         action.play();
  
-        var action = mixer.clipAction(object.animations[0]);
-        action.play();
+//         object.traverse(function (child) {
  
-        object.traverse(function (child) {
+//             if (child.isMesh) {
  
-            if (child.isMesh) {
+//                 child.castShadow = true;
+//                 child.receiveShadow = true;
  
-                child.castShadow = true;
-                child.receiveShadow = true;
- 
-            }
-            })
-            this.scene.add( object )
+//             }
+//             })
       });
       console.log(this.scene)
       this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -105,7 +105,7 @@ export default {
 
       this.renderer.setSize(window.innerWidth, window.innerHeight);
     },
-    animate() {
+    animate(scene) {
       requestAnimationFrame(this.animate);
       this.renderer.render(this.scene, this.camera);
 

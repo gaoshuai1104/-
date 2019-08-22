@@ -9,17 +9,7 @@
     text-color="#fff"
     active-text-color="#ffd04b"
   >
-    <el-submenu index="1">
-    <template slot="title"><i class="el-icon-s-cooperation"></i>采购管理</template>
-    <el-menu-item index="1-1" @click="$router.push({path:'/home'})">申请管理</el-menu-item>
-    <el-menu-item index="1-2">订单管理</el-menu-item>
-    <el-menu-item index="1-3">收货管理</el-menu-item>
-    <el-menu-item index="1-4">库存管理</el-menu-item>
-    <el-menu-item index="1-5">开支分析</el-menu-item>
-    <el-menu-item index="1-6">预算管理</el-menu-item>
-    <el-menu-item index="1-7">财务协同</el-menu-item>
-    <el-menu-item index="1-8">供应商管理</el-menu-item>
-    </el-submenu>
+  <el-menu-item index="1"><i class="el-icon-s-cooperation"></i>采购管理</el-menu-item>
     <el-submenu index="2">
     <template slot="title"><i class="el-icon-s-cooperation"></i>资产管理</template>
     <el-menu-item index="2-1">资产台账</el-menu-item>
@@ -83,7 +73,7 @@ export default {
     handleSelect(key, keyPath) {
       // console.log(key, keyPath);
       if (keyPath == 1) {
-        this.$router.push({ name: "home" });
+        this.$router.push({ name: "Apply" });
       }
       if (key == 2) {
         this.$router.push({ name: "property" });
