@@ -12,13 +12,13 @@
   <el-menu-item index="1"><i class="el-icon-s-cooperation"></i>采购管理</el-menu-item>
     <el-submenu index="2">
     <template slot="title"><i class="el-icon-s-cooperation"></i>资产管理</template>
-    <el-menu-item index="2-1">资产台账</el-menu-item>
+    <!-- <el-menu-item index="2-1">资产台账</el-menu-item>
     <el-menu-item index="2-2">资产卡片</el-menu-item>
     <el-menu-item index="2-3">资产空间分布</el-menu-item>
     <el-menu-item index="2-4">资产查询盘点</el-menu-item>
     <el-menu-item index="2-5">资产关联影响</el-menu-item>
     <el-menu-item index="2-6">资产预算管理</el-menu-item>
-    <el-menu-item index="2-7">资产成本分析</el-menu-item>
+    <el-menu-item index="2-7">资产成本分析</el-menu-item> -->
     </el-submenu>
         <el-submenu index="3">
     <template slot="title"><i class="el-icon-s-cooperation"></i>平安校园</template>
@@ -75,24 +75,24 @@ export default {
       if (keyPath == 1) {
         this.$router.push({ name: "Apply" });
       }
-      if (key == 2) {
-        this.$router.push({ name: "property" });
-      }
-      if (key == 3) {
-        this.$router.push({ name: "purchase" });
-      }
-      if (key == 4) {
-        this.$router.push({ name: "equipment" });
-      }
-      if (key == 5) {
-        this.$router.push({ name: "greenshcoll" });
-      }
-      if (key == 6) {
-        this.$router.push({ name: "stop" });
-      }
-      if (key == 7) {
-        this.$router.push({ name: "work" });
-      }
+      // if (key == 2) {
+      //   this.$router.push({ name: "property" });
+      // }
+      // if (key == 3) {
+      //   this.$router.push({ name: "purchase" });
+      // }
+      // if (key == 4) {
+      //   this.$router.push({ name: "equipment" });
+      // }
+      // if (key == 5) {
+      //   this.$router.push({ name: "greenshcoll" });
+      // }
+      // if (key == 6) {
+      //   this.$router.push({ name: "stop" });
+      // }
+      // if (key == 7) {
+      //   this.$router.push({ name: "work" });
+      // }
     }
     // rout(index){
     //   if(index==1){

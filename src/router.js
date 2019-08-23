@@ -5,6 +5,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history', 
   routes: [
     {
       path: '/',
@@ -35,19 +36,56 @@ export default new Router({
     {
       path: '/Apply',
       name: 'Apply',
-      component: () => import('./views/purchasingManagement/Apply.vue'),
+      component: () => import('./views/purchase/purchasingManagement/Apply.vue'),
       meta:{
         keepAlive: true,
         title:'申请管理',
       }
     },
     {
-      path: '/Order',
-      name: 'Order',
-      component: () => import('./views/purchasingManagement/Order.vue'),
+      path: '/query',
+      name: 'query',
+      component: () => import('./views/purchase/purchasingManagement/query.vue'),
       meta:{
         keepAlive: true,
-        title:'订单管理',
+        title:'申请查询',
+      }
+    },
+    {
+      path: '/OrderApply',
+      name: 'OrderApply',
+      component: () => import('./views/purchase/OrderManagement/OrderApply.vue'),
+      meta:{
+        keepAlive: true,
+        title:'订单申请',
+      }
+    },
+    {
+      path: '/Orderquery',
+      name: 'Orderquery',
+      component: () => import('./views/purchase/OrderManagement/Orderquery.vue'),
+      meta:{
+        keepAlive: true,
+        title:'订单查询',
+      }
+    },
+    
+    {
+      path: '/Receivinggoods',
+      name: 'Receivinggoods',
+      component: () => import('./views/purchase/Receivinggoods/index.vue'),
+      meta:{
+        keepAlive: true,
+        title:'收货管理',
+      }
+    },
+    {
+      path: '/Stock',
+      name: 'Stock',
+      component: () => import('./views/purchase/Stock/index.vue'),
+      meta:{
+        keepAlive: true,
+        title:'库存管理',
       }
     },
     {

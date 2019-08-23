@@ -3,16 +3,19 @@
 <div class="box">
     <side></side>
 <el-form ref="form" :model="form" label-width="80px" class="right">
-  <el-form-item label="商品名称">
-    <el-input v-model="form.name" size="80px"></el-input>
+  <el-form-item label="商品">
+    <el-input v-model="form.name" size="80px" prefix-icon="el-icon-search"></el-input>
   </el-form-item>
     <el-form-item label="申请人">
-    <el-input class="inp" v-model="form.user" placeholder="申请人"></el-input>
+    <el-input class="use" v-model="form.user" placeholder="申请人"></el-input>
   </el-form-item>
-  <el-form-item label="供应商">
-    <el-select v-model="form.region" placeholder="请选择供应商">
-      <el-option label="A供应商" value="shanghai"></el-option>
-      <el-option label="B供应商" value="beijing"></el-option>
+   <el-form-item label="数量">
+    <el-input class="use" v-model="form.user"></el-input>
+  </el-form-item>
+  <el-form-item label="所属部门">
+    <el-select v-model="form.region" placeholder="请选择部门" class="use">
+      <el-option label="联勤部" value="shanghai"></el-option>
+      <el-option label="保障部" value="beijing"></el-option>
     </el-select>
   </el-form-item>
   <el-form-item label="交付日期">
@@ -23,9 +26,6 @@
     <el-col :span="11">
       <el-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
     </el-col>
-  </el-form-item>
-  <el-form-item label="物流跟踪">
-    <el-switch v-model="form.delivery"></el-switch>
   </el-form-item>
   <el-form-item label="商品性质">
     <el-checkbox-group v-model="form.type">
@@ -52,7 +52,7 @@
 </div>
 </template>>
 <script>
-import side from "../../components/side/index"
+import side from "../../../components/side/index"
   export default {
       components: {
             side
@@ -98,7 +98,8 @@ height: 100%;
     position: absolute;
     top: 100px;
 }
-// .inp{
-//   width: 100px;
-// }
+.use{
+  width: 150px;
+  float: left;
+}
 </style>
