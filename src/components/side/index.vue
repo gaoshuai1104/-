@@ -3,9 +3,8 @@
 <el-row class="tac">
   <el-col :span="4" width="100px">
     <el-menu
-    :default-active="this.$route.path" router
-    unique-opened='true'
-    collapse-transition='false'
+    :default-active="$route.path" router
+    :unique-opened=true
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -18,8 +17,8 @@
           <span>申请管理</span>
         </template>
         <el-menu-item-group>
-      <el-menu-item index="1-1">采购申请输入</el-menu-item>
-      <el-menu-item index="1-2">采购申请管理</el-menu-item>
+      <el-menu-item index="/Apply">采购申请输入</el-menu-item>
+      <el-menu-item index="/query">采购申请管理</el-menu-item>
       </el-menu-item-group>
       </el-submenu>
 
@@ -29,17 +28,17 @@
           <span>订单管理</span>
         </template>
             <el-menu-item-group>
-      <el-menu-item index="2-1" @click="$router.push({path:'/OrderApply'})">订单申请输入</el-menu-item>
-      <el-menu-item index="2-2" @click="$router.push({path:'/Orderquery'})">订单申请管理</el-menu-item>
+      <el-menu-item index="/OrderApply" >订单申请输入</el-menu-item>
+      <el-menu-item index="/Orderquery" >订单申请管理</el-menu-item>
       </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="3">
+      <el-menu-item index="Receivinggoods">
         <i class="el-icon-menu"></i>
-        <span slot="title" @click="$router.push({path:'/Receivinggoods'})">收货管理</span>
+        <span slot="title">收货管理</span>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="Stock">
         <i class="el-icon-menu"></i>
-        <span slot="title" @click="$router.push({path:'/Stock'})">库存管理</span>
+        <span slot="title" >库存管理</span>
       </el-menu-item>
       <el-menu-item index="5">
         <i class="el-icon-menu"></i>
@@ -70,18 +69,7 @@
     },
     methods: {
       handleOpen(key, keyPath) {
-      //   if (keyPath == 1-1) {
-      //   this.$router.push({ name: "Apply" });
-      // }
-      // if (keyPath == 1-2) {
-      //   this.$router.push({ name: "query" });
-      // }
-      // if (key == 3) {
-      //   this.$router.push({ name: "purchase" });
-      // }
-      // if (key == 4) {
-      //   this.$router.push({ name: "equipment" });
-      // }
+    
       console.log(key, keyPath);
     },
       handleClose(key, keyPath) {
