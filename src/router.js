@@ -80,12 +80,21 @@ export default new Router({
       }
     },
     {
-      path: '/Stock',
-      name: 'Stock',
-      component: () => import('./views/purchase/Stock/index.vue'),
+      path: '/warehousingApply',
+      name: 'warehousingApply',
+      component: () => import('./views/purchase/Warehousing/warehousingApply.vue'),
       meta:{
         keepAlive: true,
-        title:'库存管理',
+        title:'输入采购入库',
+      }
+    },
+    {
+      path: '/warehousingQuery',
+      name: 'warehousingQuery',
+      component: () => import('./views/purchase/Warehousing/warehousingQuery.vue'),
+      meta:{
+        keepAlive: true,
+        title:'查询采购入库',
       }
     },
     {
@@ -124,15 +133,15 @@ export default new Router({
             title:'应急模拟',
           },
         },
-        {
-          path: '/entranceguard',
-          name: 'entranceguard',
-          component: () => import('../examples/entranceguard.vue'),
-          meta:{
-            keepAlive: true,
-            title:'智慧门禁',
-          },
-        },
+        // {
+        //   path: '/entranceguard',
+        //   name: 'entranceguard',
+        //   component: () => import('../examples/entranceguard.vue'),
+        //   meta:{
+        //     keepAlive: true,
+        //     title:'智慧门禁',
+        //   },
+        // },
         {
           path: '/monitoring',
           name: 'monitoring',

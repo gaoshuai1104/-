@@ -3,6 +3,6 @@ module.exports = {
   publicPath: './',
   // 服务器端口号
   devServer: {
-    port: 8888,
+    port: 8890,
   }
 }

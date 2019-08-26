@@ -4,7 +4,7 @@
   <el-col :span="4" width="100px">
     <el-menu
     :default-active="$route.path" router
-    :unique-opened=true
+    :collapse-transition=false
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -14,32 +14,38 @@
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-menu"></i>
-          <span>申请管理</span>
+          <span>采购申请管理</span>
         </template>
         <el-menu-item-group>
       <el-menu-item index="/Apply">采购申请输入</el-menu-item>
-      <el-menu-item index="/query">采购申请管理</el-menu-item>
+      <el-menu-item index="/query">采购申请查询</el-menu-item>
       </el-menu-item-group>
       </el-submenu>
 
       <el-submenu index="2">
         <template slot="title">
           <i class="el-icon-menu"></i>
-          <span>订单管理</span>
+          <span>采购订单管理</span>
         </template>
             <el-menu-item-group>
-      <el-menu-item index="/OrderApply" >订单申请输入</el-menu-item>
-      <el-menu-item index="/Orderquery" >订单申请管理</el-menu-item>
+      <el-menu-item index="/OrderApply" >输入采购订单</el-menu-item>
+      <el-menu-item index="/Orderquery" >采购订单列表</el-menu-item>
       </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="Receivinggoods">
+      <!-- <el-menu-item disabled index="/Receivinggoods">
         <i class="el-icon-menu"></i>
         <span slot="title">收货管理</span>
-      </el-menu-item>
-      <el-menu-item index="Stock">
-        <i class="el-icon-menu"></i>
-        <span slot="title" >库存管理</span>
-      </el-menu-item>
+      </el-menu-item> -->
+      <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <span>采购入库管理</span>
+        </template>
+            <el-menu-item-group>
+      <el-menu-item index="/warehousingApply" >输入采购入库</el-menu-item>
+      <el-menu-item index="/warehousingQuery" >查询采购入库</el-menu-item>
+      </el-menu-item-group>
+      </el-submenu>
       <el-menu-item index="5">
         <i class="el-icon-menu"></i>
         <span slot="title">开支分析</span>
@@ -80,7 +86,7 @@
 </script>
 <style>
 .tac{
-  top: 80px;
+  top: 120px;
   left: 0;
   position: fixed;
   background-color: rgb(84, 92, 100);

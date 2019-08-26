@@ -4,33 +4,40 @@
   <h2 class="titt">采购申请</h2>
     <side></side>
 <el-form ref="form" :model="form" label-width="100px" class="right">
-  <el-form-item label="申请时间">
+  <el-form-item label="提交时间">
   <span class="left"> {{dayjs().format('YYYY-MM-DD  HH:mm:ss')}} </span>
   </el-form-item>
-   <el-form-item label="交付日期">
-    <el-col :span="11">
-      <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
-    </el-col>
-  </el-form-item>
-   <el-form-item label="采购部门">
+   <el-form-item label="部门">
     <el-select v-model="form.region" placeholder="一级部门" class="use">
-      <el-option label="联勤部" value="shanghai"></el-option>
-      <el-option label="保障部" value="beijing"></el-option>
+      <el-option label="一级部门1" value="shanghai"></el-option>
+      <el-option label="一级部门2" value="beijing"></el-option>
+        <el-option label="一级部门3" value="shanghai"></el-option>
+      <el-option label="一级部门4" value="beijing"></el-option>
     </el-select>
-    <el-select v-model="form.region" placeholder="二级部门" class="use">
-      <el-option label="XX部" value="shanghai"></el-option>
-      <el-option label="XX部" value="beijing"></el-option>
+       <el-select v-model="form.region" placeholder="二级部门" class="use">
+      <el-option label="二级部门1" value="shanghai"></el-option>
+      <el-option label="二级部门2" value="beijing"></el-option>
+      <el-option label="二级部门3" value="shanghai"></el-option>
+      <el-option label="二级部门4" value="beijing"></el-option>
     </el-select>
   </el-form-item>
   <el-form-item label="负责人">
-    <el-select v-model="form.region" placeholder="申请人" class="use">
+    <el-select v-model="form.region" placeholder="请选择负责人" class="use">
       <el-option label="张三" value="shanghai"></el-option>
       <el-option label="李四" value="beijing"></el-option>
         <el-option label="王五" value="shanghai"></el-option>
       <el-option label="赵六" value="beijing"></el-option>
     </el-select>
   </el-form-item>
-    <el-form-item label="采购申请号">
+    <el-form-item label="仓库">
+    <el-select v-model="form.region" placeholder="请选择接收仓库" class="use">
+      <el-option label="A仓库" value="shanghai"></el-option>
+      <el-option label="B仓库" value="beijing"></el-option>
+        <el-option label="C仓库" value="shanghai"></el-option>
+      <el-option label="D仓库" value="beijing"></el-option>
+    </el-select>
+  </el-form-item>
+    <el-form-item label="采购入库号">
   <span class="left"> 20190826093400001 </span>
   </el-form-item>
 
@@ -101,7 +108,7 @@
     <el-table-column
       label="供应商"
       prop="gys"
-      width='100'>
+      width="100">
     </el-table-column>
     <el-table-column
       prop="pm"
@@ -161,7 +168,7 @@
 </template>
 </el-dialog>
 </div>
-<template>
+ <template>
   <el-table
     border
     ref="multipleTable"
@@ -170,49 +177,55 @@
     style="width: 100%"
     @selection-change="handleSelectionChange">
     <el-table-column
-      label="商品编码"
+      type="selection"
+      width="55">
+    </el-table-column>
+    
+    <el-table-column
+      label="采购申请号"
+      prop="sqh"
       width="100">
-            <input type="text" class="inp">
     </el-table-column>
     <el-table-column
-      label="商品名称"
-      width="100">
-<input type="text" class="inp">
+      label="供应商"
+      prop="gys"
+      width=
     </el-table-column>
     <el-table-column
-      prop=""
-      label="供应商名称"
+      prop="pm"
+      label="品目"
       width="100"
       show-overflow-tooltip>
-           <input type="text" class="inp">
     </el-table-column>
     <el-table-column
-      prop=""
-      label="规格"
+      prop="jzrq"
+      label="截止日期"
       width="100"
       show-overflow-tooltip>
-           <input type="text" class="inp">
     </el-table-column>
     <el-table-column
-      prop=""
+      prop="num"
       label="数量"
       width="100"
       show-overflow-tooltip>
-           <input type="text" class="inp">
     </el-table-column>
     <el-table-column
-      prop=""
-      label="单价"
+      prop="je"
+      label="金额"
       width="100"
       show-overflow-tooltip>
-           <input type="text" class="inp">
     </el-table-column>
     <el-table-column
-      prop=""
-      label="供应价"
+      prop="zt"
+      label="状态"
       width="100"
       show-overflow-tooltip>
-            <input type="text" class="inp">
+    </el-table-column>
+     <el-table-column
+      prop="isend"
+      label="是否结束"
+      width="100"
+      show-overflow-tooltip>
     </el-table-column>
   </el-table>
 </template>
@@ -223,7 +236,7 @@
   </el-form-item>
 </el-form>
 </div>
-</template>
+</template>>
 <script>
 import side from "../../../components/side/index"
 import dayjs from 'dayjs'
@@ -258,7 +271,80 @@ import dayjs from 'dayjs'
           num:'3',
           je:'10000',
           zt:'待审核',
-        },],
+          isend:'已结束'
+        },{
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'采购中',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已完成',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已采购',
+          isend:'结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已采购',
+          isend:'结束'
+        }, ],
       }
     },
     methods: {

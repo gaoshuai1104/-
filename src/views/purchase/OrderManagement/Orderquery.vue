@@ -1,134 +1,292 @@
 <template>
+    
 <div class="box">
+  <h2 class="titt">采购订单列表</h2>
     <side></side>
-     
-  <el-table
-  class="right"
-    :data="tableData"
-    style="width: 70%">
-    
-    <el-table-column type="expand">
-      <template slot-scope="props">
-        <el-form label-position="left" inline class="demo-table-expand">
-          <el-form-item label="商品名称">
-            <span>{{ props.row.name }}</span>
-          </el-form-item>
-          <el-form-item label="所属部门">
-            <span>{{ props.row.shop }}</span>
-          </el-form-item>
-          <el-form-item label="商品 ID">
-            <span>{{ props.row.id }}</span>
-          </el-form-item>
-          <el-form-item label="申请人">
-            <span>{{ props.row.shopId }}</span>
-          </el-form-item>
-          <el-form-item label="商品分类">
-            <span>{{ props.row.category }}</span>
-          </el-form-item>
-          <el-form-item label="供应商地址">
-            <span>{{ props.row.address }}</span>
-          </el-form-item>
-          <el-form-item label="需求原因">
-            <span>{{ props.row.desc }}</span>
-          </el-form-item>
-        </el-form>
-      </template>
-    </el-table-column>
-    <el-table-column
-      label="商品编码"
-      prop="id">
-    </el-table-column>
-    <el-table-column
-      label="商品名称"
-      prop="name">
-    </el-table-column>
-    <el-table-column
-      label="描述"
-      prop="desc">
-    </el-table-column>
-        <el-table-column label="状态">
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          @click="handleEdit(scope.$index, scope.row)">已通过</el-button>
-      </template>
-    </el-table-column>
-    
-  </el-table>
+<el-form ref="form" :model="form" label-width="100px" class="right">
+  <el-form-item label="日期">
+   <el-col :span="11">
+      <el-date-picker type="date" placeholder="开始时间" v-model="form.date1" style="width: 100%;"></el-date-picker>
+    </el-col>
+    <el-col class="line" :span="2">-</el-col>
+    <el-col :span="11">
+      <el-time-picker placeholder="结束时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
+    </el-col>
+  </el-form-item>
+   <el-form-item label="采购单号">
+     <input class="inp" type="text">
+  </el-form-item>
+   <el-form-item label="品目">
+      <el-input
+    placeholder="选择品目"
+    prefix-icon="el-icon-search"
+    v-model="input2">
+  </el-input>
+  </el-form-item>
+   <el-form-item label="采购状态">
+    <el-select v-model="form.region" placeholder="请选择" class="use">
+      <el-option label="待审核" value="shanghai"></el-option>
+      <el-option label="已审核" value="beijing"></el-option>
+      <el-option label="采购中" value="shanghai"></el-option>
+      <el-option label="已采购" value="beijing"></el-option>
+      <el-option label="已完成" value="beijing"></el-option>
+    </el-select>
+    <el-button type="success" icon="el-icon-search">搜索</el-button>
+  </el-form-item>
+  <div>
   </div>
+  <template>
+  <el-table
+    border
+    ref="multipleTable"
+    :data="tableData"
+    tooltip-effect="dark"
+    style="width: 100%"
+    @selection-change="handleSelectionChange">
+    <el-table-column
+      type="selection"
+      width="55">
+    </el-table-column>
+    
+    <el-table-column
+      label="采购申请号"
+      prop="sqh"
+      width="100">
+    </el-table-column>
+    <el-table-column
+      label="供应商"
+      prop="gys"
+      width=
+    </el-table-column>
+    <el-table-column
+      prop="pm"
+      label="品目"
+      width="100"
+      show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column
+      prop="jzrq"
+      label="截止日期"
+      width="100"
+      show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column
+      prop="num"
+      label="数量"
+      width="100"
+      show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column
+      prop="je"
+      label="金额"
+      width="100"
+      show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column
+      prop="zt"
+      label="状态"
+      width="100"
+      show-overflow-tooltip>
+    </el-table-column>
+     <el-table-column
+      prop="isend"
+      label="是否结束"
+      width="100"
+      show-overflow-tooltip>
+    </el-table-column>
+  </el-table>
 </template>
+ <div class="block">
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage4"
+      :page-sizes="[100, 200, 300, 400]"
+      :page-size="100"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400">
+    </el-pagination>
+  </div>
 
-<style lang="less" scoped>
-  .demo-table-expand {
-    font-size: 0;
-  }
-  .demo-table-expand label {
-    width: 90px;
-    color: #99a9bf;
-  }
-  .demo-table-expand .el-form-item {
-    margin-right: 0;
-    margin-bottom: 0;
-    width: 50%;
-  }
-  .box{
-height: 100%;
-}
-.right{
-    margin-left: 20%;
-    position: absolute;
-    top: 90px;
-}
-#inp{
-    width: 200px;
-    margin-top: 30px;
-    margin-bottom: 50px;
-    margin-left: 300px;
-}
-</style>
 
+  <div class="button">
+      <el-button type="danger">删除所选项</el-button>
+    </div>
+</el-form>
+</div>
+</template>
 <script>
 import side from "../../../components/side/index"
+import dayjs from 'dayjs'
   export default {
-            components: {
-            side
+      components: {
+            side,
+            
       },
     data() {
       return {
-        tableData: [{
-          id: '12987122',
-          name: '桌椅',
-          category: '固定物资',
-          desc: 'XX为XXXXX',
-          address: '上海市普陀区真北路',
-          shop: '职工部',
-          shopId: '王小虎'
+        url1: '',
+        dayjs,
+        value1:'',
+        input:'',
+        form: {
+          name: '',
+          region: '',
+          date1: '',
+          date2: '',
+          delivery: false,
+          type: [],
+          resource: '',
+          desc: '',
+          user:''
+        },
+        tableData: [ {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        },{
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已审核',
+          isend:'已结束'
         }, {
-         id: '12987122',
-          name: '桌椅',
-          category: '固定物资',
-          desc: 'XX为XXXXX',
-          address: '上海市普陀区真北路',
-          shop: '职工部',
-          shopId: '王小虎'
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'采购中',
+          isend:'已结束'
         }, {
-          id: '12987122',
-          name: '桌椅',
-          category: '固定物资',
-          desc: 'XX为XXXXX',
-          address: '上海市普陀区真北路',
-          shop: '职工部',
-          shopId: '王小虎'
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已完成',
+          isend:'已结束'
         }, {
-          id: '12987122',
-          name: '桌椅',
-          category: '固定物资',
-          desc: 'XX为XXXXX',
-          address: '上海市普陀区真北路',
-          shop: '职工部',
-          shopId: '王小虎'
-        }]
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已采购',
+          isend:'结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已采购',
+          isend:'结束'
+        }, ],
       }
+    },
+    methods: {
+      
+      onSubmit() {
+        alert("申请已提交")
+        this.form.name=""
+        this.form.user=""
+        this.form.region=""
+        this.form.date1=""
+        this.form.date2=""
+          this.form.delivery=false
+        this.form.type=[]
+        this.form.resource=""
+        this.form.desc=""
+        this.form.user=""
+      },
+      handleSelectionChange(val) {
+        this.multipleSelection = val;
+      },
+      getdatatime(){//默认显示今天
+      this.value1= new Date();
+    },
+
+    },
+    mounted(){
+      this.url1 = 'https://www.jb51.net/article/124153.htm'
     }
   }
 </script>
+<style lang="less" scoped>
+.box{
+height: 100%;
+}
+.titt{
+margin-top: 50px;
+margin-left: 100px;
+}
+.left{
+  float: left;
+}
+.right{
+    margin-left: 25%;
+    position: absolute;
+    top: 180px;
+}
+.use{
+  width: 150px;
+  float: left;
+}
+.block{
+  float: right;
+  margin: 30px 0;
+}
+.button{
+  float: left;
+  margin-top: 30px;
+}
+.inp{
+  height: 30px;
+  outline:none;
+  border-radius: 4px;
+  float: left;
+}
+#mag{
+  margin-top: 40px;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
     <div class="bg">
-        安防监控
+            <iframe src="http://123.206.216.171:8888/safe/checkin.html" id="mobsf" scrolling="no" frameborder="0" style="position:absolute;top:80px;left: 120px;"></iframe>
     </div>
 </template>
 <script>

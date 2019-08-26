@@ -1,4 +1,9 @@
 <template>
+<div>
+  <div id="logo">
+    <img class="pty" src="../../../static/pty.png" alt="">
+     <h3>中国浦东干部管理学院欢迎您!</h3>
+  </div>
   <el-menu
     id="bg-top"
     :default-active="activeIndex2"
@@ -12,17 +17,18 @@
   <el-menu-item index="1"><i class="el-icon-s-cooperation"></i>采购管理</el-menu-item>
     <el-submenu index="2">
     <template slot="title"><i class="el-icon-s-cooperation"></i>资产管理</template>
-    <!-- <el-menu-item index="2-1">资产台账</el-menu-item>
+    <el-menu-item index="2-1">资产台账</el-menu-item>
     <el-menu-item index="2-2">资产卡片</el-menu-item>
     <el-menu-item index="2-3">资产空间分布</el-menu-item>
     <el-menu-item index="2-4">资产查询盘点</el-menu-item>
     <el-menu-item index="2-5">资产关联影响</el-menu-item>
     <el-menu-item index="2-6">资产预算管理</el-menu-item>
-    <el-menu-item index="2-7">资产成本分析</el-menu-item> -->
+    <el-menu-item index="2-7">资产成本分析</el-menu-item>
     </el-submenu>
         <el-submenu index="3">
     <template slot="title"><i class="el-icon-s-cooperation"></i>平安校园</template>
-    <el-menu-item index="3-1" @click="$router.push({path:'/entranceguard'})">智慧门禁</el-menu-item>
+    <el-menu-item index="3-1" @click="$router.push({path:'/entranceguard'})">智慧门禁
+    </el-menu-item>
     <el-menu-item index="3-2" @click="$router.push({path:'/monitoring'})">安防监控</el-menu-item>
     <el-menu-item index="3-3" @click="$router.push({path:'/analyze'})">异情分析</el-menu-item>
     <el-menu-item index="3-4" @click="$router.push({path:'/emergencies'})">应急模拟</el-menu-item>
@@ -60,11 +66,14 @@
     <el-menu-item index="7-4">费用分摊</el-menu-item>
     </el-submenu>
   </el-menu>
+  </div>
 </template>
 <script>
+import dayjs from 'dayjs'
 export default {
   data() {
     return {
+      dayjs,
       activeIndex: "1",
       activeIndex2: "1"
     };
@@ -109,12 +118,36 @@ export default {
   justify-content: space-between;
   position: fixed;
   height: 80px;
-  top: 0;
+  top: 40px;
   left:0;
-  z-index: 100;
+  z-index: 10;
   width: 100%;
   color: #8791a2;
   background: #0a2549;
+}
+#logo{
+  position: fixed;
+  top:0;
+  background-color: #fff;
+  z-index: 10;
+  width: 100%;
+  h3{
+    float: right;
+    margin-right: 40px;
+    line-height: 10px;
+  }
+}
+.pty{
+  height: 40px;
+  float: left;
+}
+.righ{
+  z-index: 11;
+  float: right;
+  margin-right: 60px;
+}
+.time{
+  line-height: 40px;
 }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

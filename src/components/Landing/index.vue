@@ -4,7 +4,7 @@
       <img src="../../assets/timg.jpg" class />
     </div>
     <div class="right">
-      <h2>华建盛裕（上海）建筑科技有限公司</h2>
+      <h2>中国浦东干部管理学院</h2>
       <span>BIM.FM运营管理平台</span>
       <div class="user">
         <el-input placeholder="请输入用户名" v-model="username" clearable></el-input>
@@ -33,7 +33,7 @@ export default {
   // },
   methods: {
     lond() {
-      this.$router.push({ name: "home" });
+      this.$router.push({ name: "Apply" });
     }
   }
 };
