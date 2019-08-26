@@ -1,58 +1,6 @@
 <template>
     
 <div class="box">
-  <h2 class="titt">采购申请</h2>
-    <side></side>
-<el-form ref="form" :model="form" label-width="100px" class="right">
-  <el-form-item label="申请时间">
-  <span class="left"> {{dayjs().format('YYYY-MM-DD  HH:mm:ss')}} </span>
-  </el-form-item>
-   <el-form-item label="交付日期">
-    <el-col :span="11">
-      <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
-    </el-col>
-  </el-form-item>
-   <el-form-item label="采购部门">
-    <el-select v-model="form.region" placeholder="一级部门" class="use">
-      <el-option label="联勤部" value="shanghai"></el-option>
-      <el-option label="保障部" value="beijing"></el-option>
-    </el-select>
-    <el-select v-model="form.region" placeholder="二级部门" class="use">
-      <el-option label="XX部" value="shanghai"></el-option>
-      <el-option label="XX部" value="beijing"></el-option>
-    </el-select>
-  </el-form-item>
-  <el-form-item label="负责人">
-    <el-select v-model="form.region" placeholder="申请人" class="use">
-      <el-option label="张三" value="shanghai"></el-option>
-      <el-option label="李四" value="beijing"></el-option>
-        <el-option label="王五" value="shanghai"></el-option>
-      <el-option label="赵六" value="beijing"></el-option>
-    </el-select>
-  </el-form-item>
-    <el-form-item label="采购申请号">
-  <span class="left"> 20190826093400001 </span>
-  </el-form-item>
-
-  <el-form-item label="备注">
-    <el-input type="textarea" v-model="form.desc"></el-input>
-  </el-form-item>
-  <div>
-  </div>
-<div class="pri">
-<el-button type="text" @click="centerDialogVisible = true">从采购申请导入</el-button>
-
-<el-dialog
-  title=""
-  :visible.sync="centerDialogVisible"
-  width="100%"
-  height="100%"
-  center
-  z-index=1000>
-  <template>
-    
-<div class="box">
-  <h2 class="titt">采购申请列表</h2>
 <el-form ref="form" :model="form" label-width="100px" class="right">
   <el-form-item label="申请日期">
    <el-col :span="11">
@@ -77,10 +25,8 @@
     <el-button type="success" icon="el-icon-search">搜索</el-button>
   </el-form-item>
   <div>
-    
-    <!-- <iframe src="https://www.baidu.com" id="mobsf" scrolling="no" frameborder="0" style="position:absolute;top:80px;left: 120px;"></iframe> -->
   </div>
- <template>
+  <template>
   <el-table
     border
     ref="multipleTable"
@@ -101,7 +47,7 @@
     <el-table-column
       label="供应商"
       prop="gys"
-      width='100'>
+      width="100">
     </el-table-column>
     <el-table-column
       prop="pm"
@@ -153,78 +99,15 @@
     </el-pagination>
   </div>
 
-  <el-form-item id="mag">
-    <el-button type="primary" @click="centerDialogVisible = false">确认选择</el-button>
-  </el-form-item>
-</el-form>
-</div>
-</template>
-</el-dialog>
-</div>
-<template>
-  <el-table
-    ref="multipleTable"
-    :data="tableData"
-    tooltip-effect="dark"
-    style="width: 90%"
-    @selection-change="handleSelectionChange">
-    <el-table-column
-      label="商品编码"
-      width="100">
-            <input type="text" class="inp">
-    </el-table-column>
-    <el-table-column
-      label="商品名称"
-      width="100">
-<input type="text" class="inp">
-    </el-table-column>
-    <el-table-column
-      prop=""
-      label="供应商名称"
-      width="100"
-      show-overflow-tooltip>
-           <input type="text" class="inp">
-    </el-table-column>
-    <el-table-column
-      prop=""
-      label="规格"
-      width="100"
-      show-overflow-tooltip>
-           <input type="text" class="inp">
-    </el-table-column>
-    <el-table-column
-      prop=""
-      label="数量"
-      width="100"
-      show-overflow-tooltip>
-           <input type="text" class="inp">
-    </el-table-column>
-    <el-table-column
-      prop=""
-      label="单价"
-      width="100"
-      show-overflow-tooltip>
-           <input type="text" class="inp">
-    </el-table-column>
-    <el-table-column
-      prop=""
-      label="供应价"
-      width="106"
-      show-overflow-tooltip>
-            <input type="text" class="inp">
-    </el-table-column>
-  </el-table>
-</template>
 
-  <el-form-item id="mag">
-    <el-button type="primary" @click="onSubmit">保存</el-button>
-    <el-button>重新输入</el-button>
-  </el-form-item>
+  <div class="button">
+      <el-button type="danger">删除所选项</el-button>
+    </div>
 </el-form>
 </div>
 </template>
 <script>
-import side from "../../../components/side/index"
+import side from "../side/index"
 import dayjs from 'dayjs'
   export default {
       components: {
@@ -233,7 +116,6 @@ import dayjs from 'dayjs'
       },
     data() {
       return {
-        centerDialogVisible: false,
         url1: '',
         dayjs,
         value1:'',
@@ -257,7 +139,80 @@ import dayjs from 'dayjs'
           num:'3',
           je:'10000',
           zt:'待审核',
-        },],
+          isend:'已结束'
+        },{
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'采购中',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已完成',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已采购',
+          isend:'结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'待审核',
+          isend:'已结束'
+        }, {
+          sqh: 'CG2019082001',
+          gys: '京东',
+          pm: '笔记本电脑',
+          jzrq:'2019-09-10',
+          num:'3',
+          je:'10000',
+          zt:'已采购',
+          isend:'结束'
+        }, ],
       }
     },
     methods: {
@@ -289,21 +244,13 @@ import dayjs from 'dayjs'
   }
 </script>
 <style lang="less" scoped>
-.box{
-height: 100%;
-}
 .titt{
-margin-left: 270px;
+// margin-left: 270px;
 }
 .left{
   float: left;
 }
-.pri{
-  margin-bottom: 10px;
-  float: left;
-}
 .right{
-    margin-left: 25%;
     position: absolute;
     top: 180px;
 }
@@ -311,18 +258,21 @@ margin-left: 270px;
   width: 150px;
   float: left;
 }
+.block{
+  float: right;
+  margin: 30px 0;
+}
+.button{
+  float: left;
+  margin-top: 30px;
+}
 .inp{
-  border: none;
-  height: 50px;
+  height: 30px;
   outline:none;
+  border-radius: 4px;
+  float: left;
 }
 #mag{
-  left: 0;
-  margin-top: 20px;
-}
-</style>
-<style>
-.el-dialog__wrapper,.el-dialog--center .el-dialog__body,.el-dialog__header{
-  background-color: #eee;
+  margin-top: 40px;
 }
 </style>

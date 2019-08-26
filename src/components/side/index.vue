@@ -94,4 +94,12 @@
 .el-submenu__title,.el-menu-item{
   width: 200px;
 }
+.el-table td, .el-table th.is-leaf{
+  border-bottom: 1px solid rgb(84, 92, 100);
+  border-left: 1px solid rgb(84, 92, 100);
+}
+
+.el-table{
+  border: 1px solid rgb(84, 92, 100); 
+}
 </style>

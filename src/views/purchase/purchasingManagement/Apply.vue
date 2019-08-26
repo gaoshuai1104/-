@@ -183,8 +183,7 @@ import dayjs from 'dayjs'
 height: 100%;
 }
 .titt{
-margin-top: 50px;
-margin-left: 100px;
+margin-left: 270px;
 }
 .left{
   float: left;
