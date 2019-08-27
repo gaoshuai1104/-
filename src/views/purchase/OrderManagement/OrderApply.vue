@@ -1,7 +1,7 @@
 <template>
     
 <div class="box">
-  <h2 class="titt">采购申请</h2>
+  <h2 class="titt">输入采购订单</h2>
     <side></side>
 <el-form ref="form" :model="form" label-width="100px" class="right">
   <el-form-item label="申请时间">
@@ -17,10 +17,12 @@
       <el-option label="联勤部" value="shanghai"></el-option>
       <el-option label="保障部" value="beijing"></el-option>
     </el-select>
+    <div class="sel">
     <el-select v-model="form.region" placeholder="二级部门" class="use">
       <el-option label="XX部" value="shanghai"></el-option>
       <el-option label="XX部" value="beijing"></el-option>
     </el-select>
+    </div>
   </el-form-item>
   <el-form-item label="负责人">
     <el-select v-model="form.region" placeholder="申请人" class="use">
@@ -42,12 +44,12 @@
 <div class="pri">
 <el-button type="text" @click="centerDialogVisible = true">从采购申请导入</el-button>
 
-<el-dialog
-  title=""
+<el-drawer
+  direction="ttb"
   :visible.sync="centerDialogVisible"
-  width="100%"
-  height="100%"
+  size="100%"
   center
+  wrapperClosable="true"
   z-index=1000>
   <template>
     
@@ -64,7 +66,9 @@
     </el-col>
   </el-form-item>
    <el-form-item label="采购申请号">
-     <input class="inp" type="text">
+     <div class="sqh">
+       <el-input v-model="input" placeholder="请输入采购申请号"></el-input>
+     </div>
   </el-form-item>
    <el-form-item label="申请状态">
     <el-select v-model="form.region" placeholder="请选择" class="use">
@@ -74,7 +78,11 @@
       <el-option label="已采购" value="beijing"></el-option>
       <el-option label="已完成" value="beijing"></el-option>
     </el-select>
-    <el-button type="success" icon="el-icon-search">搜索</el-button>
+
+    <div class="butt">
+      <el-button type="success" icon="el-icon-search">搜索</el-button>
+    </div>
+
   </el-form-item>
   <div>
     
@@ -159,14 +167,14 @@
 </el-form>
 </div>
 </template>
-</el-dialog>
+</el-drawer>
 </div>
 <template>
   <el-table
     ref="multipleTable"
     :data="tableData"
     tooltip-effect="dark"
-    style="width: 90%"
+    style="width: 89%"
     @selection-change="handleSelectionChange">
     <el-table-column
       label="商品编码"
@@ -209,7 +217,7 @@
     <el-table-column
       prop=""
       label="供应价"
-      width="106"
+      width="100"
       show-overflow-tooltip>
             <input type="text" class="inp">
     </el-table-column>
@@ -293,10 +301,21 @@ import dayjs from 'dayjs'
 height: 100%;
 }
 .titt{
+    margin: 50px 0;
 margin-left: 270px;
 }
 .left{
   float: left;
+}
+.line{
+  padding-left: 30px;
+}
+.sqh{
+  width: 200px;
+}
+.butt{
+  float: right;
+  margin-right: 200px;
 }
 .pri{
   margin-bottom: 10px;
@@ -313,7 +332,7 @@ margin-left: 270px;
 }
 .inp{
   border: none;
-  height: 50px;
+  height: 40px;
   outline:none;
 }
 #mag{

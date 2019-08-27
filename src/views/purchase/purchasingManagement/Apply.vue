@@ -17,10 +17,12 @@
       <el-option label="联勤部" value="shanghai"></el-option>
       <el-option label="保障部" value="beijing"></el-option>
     </el-select>
+    <div class="sel">
     <el-select v-model="form.region" placeholder="二级部门" class="use">
       <el-option label="XX部" value="shanghai"></el-option>
       <el-option label="XX部" value="beijing"></el-option>
     </el-select>
+    </div>
   </el-form-item>
   <el-form-item label="申请人">
     <el-select v-model="form.region" placeholder="申请人" class="use">
@@ -184,6 +186,7 @@ height: 100%;
 }
 .titt{
 margin-left: 270px;
+  margin: 50px 0;
 }
 .left{
   float: left;
@@ -205,4 +208,9 @@ margin-left: 270px;
 #mag{
   margin-top: 40px;
 }
+</style>
+<style>
+  .sel{
+    margin-left: 200px;
+  }
 </style>

@@ -245,6 +245,7 @@ import dayjs from 'dayjs'
 </script>
 <style lang="less" scoped>
 .titt{
+    margin: 50px 0;
 // margin-left: 270px;
 }
 .left{

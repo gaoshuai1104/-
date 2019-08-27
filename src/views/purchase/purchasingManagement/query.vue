@@ -251,6 +251,7 @@ height: 100%;
 }
 .titt{
 margin-left: 270px;
+  margin: 50px 0;
 }
 .left{
   float: left;

@@ -1,7 +1,7 @@
 <template>
     
 <div class="box">
-  <h2 class="titt">采购申请</h2>
+  <h2 class="titt">输入采购入库</h2>
     <side></side>
 <el-form ref="form" :model="form" label-width="100px" class="right">
   <el-form-item label="提交时间">
@@ -13,13 +13,15 @@
       <el-option label="一级部门2" value="beijing"></el-option>
         <el-option label="一级部门3" value="shanghai"></el-option>
       <el-option label="一级部门4" value="beijing"></el-option>
-    </el-select>
+<div class="sel">
+      </el-select>
        <el-select v-model="form.region" placeholder="二级部门" class="use">
       <el-option label="二级部门1" value="shanghai"></el-option>
       <el-option label="二级部门2" value="beijing"></el-option>
       <el-option label="二级部门3" value="shanghai"></el-option>
       <el-option label="二级部门4" value="beijing"></el-option>
     </el-select>
+</div>
   </el-form-item>
   <el-form-item label="负责人">
     <el-select v-model="form.region" placeholder="请选择负责人" class="use">
@@ -49,11 +51,10 @@
 <div class="pri">
 <el-button type="text" @click="centerDialogVisible = true">从采购申请导入</el-button>
 
-<el-dialog
-  title=""
+<el-drawer
+  direction="ttb"
   :visible.sync="centerDialogVisible"
-  width="100%"
-  height="100%"
+  size="100%"
   center
   z-index=1000>
   <template>
@@ -65,7 +66,7 @@
    <el-col :span="11">
       <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
     </el-col>
-    <el-col class="line" :span="2">-</el-col>
+    <el-col class="line" :span="2"> - </el-col>
     <el-col :span="11">
       <el-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
     </el-col>
@@ -166,7 +167,7 @@
 </el-form>
 </div>
 </template>
-</el-dialog>
+</el-drawer>
 </div>
  <template>
   <el-table
@@ -174,7 +175,7 @@
     ref="multipleTable"
     :data="tableData"
     tooltip-effect="dark"
-    style="width: 100%"
+    style="width: 90%"
     @selection-change="handleSelectionChange">
     <el-table-column
       type="selection"
@@ -189,7 +190,7 @@
     <el-table-column
       label="供应商"
       prop="gys"
-      width=
+      width="100">
     </el-table-column>
     <el-table-column
       prop="pm"
@@ -218,7 +219,7 @@
     <el-table-column
       prop="zt"
       label="状态"
-      width="100"
+      width="94"
       show-overflow-tooltip>
     </el-table-column>
      <el-table-column
@@ -264,33 +265,6 @@ import dayjs from 'dayjs'
           user:''
         },
         tableData: [ {
-          sqh: 'CG2019082001',
-          gys: '京东',
-          pm: '笔记本电脑',
-          jzrq:'2019-09-10',
-          num:'3',
-          je:'10000',
-          zt:'待审核',
-          isend:'已结束'
-        },{
-          sqh: 'CG2019082001',
-          gys: '京东',
-          pm: '笔记本电脑',
-          jzrq:'2019-09-10',
-          num:'3',
-          je:'10000',
-          zt:'已审核',
-          isend:'已结束'
-        }, {
-          sqh: 'CG2019082001',
-          gys: '京东',
-          pm: '笔记本电脑',
-          jzrq:'2019-09-10',
-          num:'3',
-          je:'10000',
-          zt:'采购中',
-          isend:'已结束'
-        }, {
           sqh: 'CG2019082001',
           gys: '京东',
           pm: '笔记本电脑',
@@ -376,5 +350,8 @@ margin-left: 100px;
 <style>
 .el-dialog__wrapper,.el-dialog--center .el-dialog__body,.el-dialog__header{
   background-color: #eee;
+}
+.el-col-2{
+  padding-left: 30px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     
 <div class="box">
-  <h2 class="titt">采购申请列表</h2>
+  <h2 class="titt">采购入库列表</h2>
     <side></side>
 <el-form ref="form" :model="form" label-width="100px" class="right">
   <el-form-item label="申请日期">
@@ -49,7 +49,7 @@
     <el-table-column
       label="供应商"
       prop="gys"
-      width=
+      width="100">
     </el-table-column>
     <el-table-column
       prop="pm"
@@ -103,6 +103,8 @@
 
 
   <div class="button">
+      <el-button type="success">批准入库</el-button>
+      <el-button type="warning">不批准入库</el-button>
       <el-button type="danger">删除所选项</el-button>
     </div>
 </el-form>
@@ -251,6 +253,7 @@ height: 100%;
 }
 .titt{
 margin-left: 270px;
+  margin: 50px 0;
 }
 .left{
   float: left;

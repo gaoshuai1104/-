@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="left">
-      <img src="../../assets/timg.jpg" class />
+      <img src="../../../static/bg.jpg" class />
     </div>
     <div class="right">
       <h2>中国浦东干部管理学院</h2>
