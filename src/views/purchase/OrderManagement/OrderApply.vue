@@ -54,14 +54,14 @@
   <template>
     
 <div class="box">
-  <h2 class="titt">采购申请列表</h2>
-<el-form ref="form" :model="form" label-width="100px" class="right">
+  <h2 class="titts">采购申请列表</h2>
+<el-form ref="form" :model="form" label-width="100px" class="rights">
   <el-form-item label="申请日期">
-   <el-col :span="11">
+   <el-col :span="6">
       <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
     </el-col>
     <el-col class="line" :span="2">-</el-col>
-    <el-col :span="11">
+    <el-col :span="6">
       <el-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
     </el-col>
   </el-form-item>
@@ -94,7 +94,7 @@
     ref="multipleTable"
     :data="tableData"
     tooltip-effect="dark"
-    style="width: 100%"
+    style="width: 83%"
     @selection-change="handleSelectionChange">
     <el-table-column
       type="selection"
@@ -343,5 +343,17 @@ margin-left: 270px;
 <style>
 .el-dialog__wrapper,.el-dialog--center .el-dialog__body,.el-dialog__header{
   background-color: #eee;
+}
+.el-dialog__wrapper{
+  width: 90%;
+  left: 5%;
+  height: 90%;
+  top: 5%;
+}
+.rights{
+margin-left: 15%;
+}
+.titts{
+  margin-left: 15%;
 }
 </style>

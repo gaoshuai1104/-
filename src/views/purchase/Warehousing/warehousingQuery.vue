@@ -14,7 +14,9 @@
     </el-col>
   </el-form-item>
    <el-form-item label="采购申请号">
-     <input class="inp" type="text">
+        <div class="sqh">
+       <el-input v-model="input" placeholder="请输入采购申请号"></el-input>
+     </div>
   </el-form-item>
    <el-form-item label="申请状态">
     <el-select v-model="form.region" placeholder="请选择" class="use">
@@ -240,11 +242,7 @@ import dayjs from 'dayjs'
       getdatatime(){//默认显示今天
       this.value1= new Date();
     },
-
     },
-    mounted(){
-      this.url1 = 'https://www.jb51.net/article/124153.htm'
-    }
   }
 </script>
 <style lang="less" scoped>
@@ -254,6 +252,9 @@ height: 100%;
 .titt{
 margin-left: 270px;
   margin: 50px 0;
+}
+.sqh{
+  width: 200px;
 }
 .left{
   float: left;

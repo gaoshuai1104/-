@@ -122,7 +122,7 @@
   text-align: left;
 }
 .el-submenu .el-menu-item{
-  min-width: 0;
+  min-width: 140px;
 }
 .el-icon-arrow-down:before{
   display: none;

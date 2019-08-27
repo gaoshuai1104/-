@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from '../node_modules/axios'
+import $ from 'jquery'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 // import * as THREE from 'three'
@@ -16,5 +17,6 @@ new Vue({
   router,
   store,
   axios,
+  $,
   render: h => h(App)
 }).$mount('#app')

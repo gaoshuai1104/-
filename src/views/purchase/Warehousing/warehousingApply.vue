@@ -58,19 +58,21 @@
   <template>
     
 <div class="box">
-  <h2 class="titt">采购申请列表</h2>
-<el-form ref="form" :model="form" label-width="100px" class="right">
+  <h2 class="titts">采购申请列表</h2>
+<el-form ref="form" :model="form" label-width="100px" class="rights">
   <el-form-item label="申请日期">
-   <el-col :span="11">
+   <el-col :span="6">
       <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
     </el-col>
     <el-col class="line" :span="2"> - </el-col>
-    <el-col :span="11">
+    <el-col :span="6">
       <el-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
     </el-col>
   </el-form-item>
    <el-form-item label="采购申请号">
-     <input class="inp" type="text">
+         <div class="sqh">
+       <el-input v-model="input" placeholder="请输入采购申请号"></el-input>
+     </div>
   </el-form-item>
    <el-form-item label="申请状态">
     <el-select v-model="form.region" placeholder="请选择" class="use">
@@ -80,7 +82,9 @@
       <el-option label="已采购" value="beijing"></el-option>
       <el-option label="已完成" value="beijing"></el-option>
     </el-select>
-    <el-button type="success" icon="el-icon-search">搜索</el-button>
+    <div class="butt">
+      <el-button type="success" icon="el-icon-search">搜索</el-button>
+    </div>
   </el-form-item>
  <template>
   <el-table
@@ -88,7 +92,7 @@
     ref="multipleTable"
     :data="tableData"
     tooltip-effect="dark"
-    style="width: 100%"
+    style="width: 83%"
     @selection-change="handleSelectionChange">
     <el-table-column
       type="selection"
@@ -268,15 +272,6 @@ import dayjs from 'dayjs'
           je:'10000',
           zt:'已完成',
           isend:'已结束'
-        }, {
-          sqh: 'CG2019082001',
-          gys: '京东',
-          pm: '笔记本电脑',
-          jzrq:'2019-09-10',
-          num:'3',
-          je:'10000',
-          zt:'待审核',
-          isend:'已结束'
         },],
       }
     },
@@ -323,6 +318,13 @@ margin-left: 100px;
   margin-bottom: 10px;
   float: left;
 }
+.sqh{
+  width: 200px;
+}
+.butt{
+  float: right;
+  margin-right: 200px;
+}
 .right{
     margin-left: 25%;
     position: absolute;
@@ -348,5 +350,20 @@ margin-left: 100px;
 }
 .el-col-2{
   padding-left: 30px;
+}
+.el-drawer__header{
+  margin-bottom: 0;
+}
+.el-dialog__wrapper{
+  width: 90%;
+  left: 5%;
+  height: 90%;
+  top: 5%;
+}
+.rights{
+margin-left: 15%;
+}
+.titts{
+  margin-left: 15%;
 }
 </style>
