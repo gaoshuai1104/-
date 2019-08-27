@@ -13,8 +13,8 @@
       <el-option label="一级部门2" value="beijing"></el-option>
         <el-option label="一级部门3" value="shanghai"></el-option>
       <el-option label="一级部门4" value="beijing"></el-option>
+            </el-select>
 <div class="sel">
-      </el-select>
        <el-select v-model="form.region" placeholder="二级部门" class="use">
       <el-option label="二级部门1" value="shanghai"></el-option>
       <el-option label="二级部门2" value="beijing"></el-option>
@@ -46,8 +46,6 @@
   <el-form-item label="备注">
     <el-input type="textarea" v-model="form.desc"></el-input>
   </el-form-item>
-  <div>
-  </div>
 <div class="pri">
 <el-button type="text" @click="centerDialogVisible = true">从采购申请导入</el-button>
 
@@ -84,10 +82,6 @@
     </el-select>
     <el-button type="success" icon="el-icon-search">搜索</el-button>
   </el-form-item>
-  <div>
-    
-    <!-- <iframe src="https://www.baidu.com" id="mobsf" scrolling="no" frameborder="0" style="position:absolute;top:80px;left: 120px;"></iframe> -->
-  </div>
  <template>
   <el-table
     border
@@ -236,6 +230,7 @@
     <el-button>重新输入</el-button>
   </el-form-item>
 </el-form>
+</div>
 </div>
 </template>>
 <script>

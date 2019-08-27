@@ -106,15 +106,42 @@ export default new Router({
         title:'资产管理',
       }
     },
-    // {
-    //   path: '/purchase',
-    //   name: 'purchase',
-    //   component: () => import('./views/Management/purchase.vue'),
-    //   meta:{
-    //     keepAlive: true,
-    //     title:'平安校园',
-    //   },
-    //    },
+    {
+      path: '/Admission',
+      name: 'Admission',
+      component: () => import('./views/Safety/Admission.vue'),
+      meta:{
+        keepAlive: true,
+        title:'入校登记',
+      },
+       },
+       {
+        path: '/Leavingschool',
+        name: 'Leavingschool',
+        component: () => import('./views/Safety/Leavingschool.vue'),
+        meta:{
+          keepAlive: true,
+          title:'离校登记',
+        },
+         },
+         {
+          path: '/information',
+          name: 'information',
+          component: () => import('./views/Safety/information.vue'),
+          meta:{
+            keepAlive: true,
+            title:'访客信息',
+          },
+           },
+           {
+            path: '/list',
+            name: 'list',
+            component: () => import('./views/Safety/list.vue'),
+            meta:{
+              keepAlive: true,
+              title:'访客列表',
+            },
+             },
         {
           path: '/analyze',
           name: 'analyze',

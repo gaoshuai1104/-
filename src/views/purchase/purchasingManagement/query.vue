@@ -49,7 +49,7 @@
     <el-table-column
       label="供应商"
       prop="gys"
-      width=
+      width="100">
     </el-table-column>
     <el-table-column
       prop="pm"

@@ -15,6 +15,7 @@
     active-text-color="#ffd04b"
   >
   <el-menu-item index="1"><i class="el-icon-s-cooperation"></i>采购管理</el-menu-item>
+  <el-menu-item index="3"><i class="el-icon-s-cooperation"></i>平安校园</el-menu-item>
     <el-submenu index="2">
     <template slot="title"><i class="el-icon-s-cooperation"></i>资产管理</template>
     <el-menu-item index="2-1">资产台账</el-menu-item>
@@ -24,14 +25,6 @@
     <el-menu-item index="2-5">资产关联影响</el-menu-item>
     <el-menu-item index="2-6">资产预算管理</el-menu-item>
     <el-menu-item index="2-7">资产成本分析</el-menu-item>
-    </el-submenu>
-        <el-submenu index="3">
-    <template slot="title"><i class="el-icon-s-cooperation"></i>平安校园</template>
-    <el-menu-item index="3-1" @click="$router.push({path:'/entranceguard'})">智慧门禁
-    </el-menu-item>
-    <el-menu-item index="3-2" @click="$router.push({path:'/monitoring'})">安防监控</el-menu-item>
-    <el-menu-item index="3-3" @click="$router.push({path:'/analyze'})">异情分析</el-menu-item>
-    <el-menu-item index="3-4" @click="$router.push({path:'/emergencies'})">应急模拟</el-menu-item>
     </el-submenu>
     <el-submenu index="4">
     <template slot="title"><i class="el-icon-s-cooperation"></i>设备运维</template>
@@ -87,9 +80,9 @@ export default {
       // if (key == 2) {
       //   this.$router.push({ name: "property" });
       // }
-      // if (key == 3) {
-      //   this.$router.push({ name: "purchase" });
-      // }
+      if (key == 3) {
+        this.$router.push({ name: "Admission" });
+      }
       // if (key == 4) {
       //   this.$router.push({ name: "equipment" });
       // }

@@ -117,8 +117,7 @@ import side from "../../../components/side/index"
 import dayjs from 'dayjs'
   export default {
       components: {
-            side,
-            
+            side,  
       },
     data() {
       return {
