@@ -53,7 +53,7 @@
       </el-menu-item-group>
       </div>
       </el-submenu>
-      <el-menu-item index="5">
+      <el-menu-item index="/demo">
         <i class="el-icon-menu"></i>
         <span slot="title">开支分析管理</span>
       </el-menu-item>

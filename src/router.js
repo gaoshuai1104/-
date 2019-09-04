@@ -5,7 +5,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history', 
+  // mode: 'history', 
   routes: [
     {
       path: '/',
@@ -212,6 +212,15 @@ export default new Router({
       meta:{
         keepAlive: true,
         title:'工作场所管理',
+      }
+    },
+    {
+      path: '/demo',
+      name: 'demo',
+      component: () => import('../xhz/demo.vue'),
+      meta:{
+        keepAlive: true,
+        title:'模型展示',
       }
     },
   ]
