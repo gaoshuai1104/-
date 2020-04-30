@@ -13,7 +13,7 @@
     "dat.gui": "^0.7.6",
     "dayjs": "^1.8.15",
     "element-ui": "^2.11.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "stats-js": "^1.0.1",
     "three": "^0.107.0",
     "three-css2drender": "^1.0.0",
