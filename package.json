@@ -15,7 +15,7 @@
     "element-ui": "^2.11.1",
     "jquery": "^3.4.1",
     "stats-js": "^1.0.1",
-    "three": "^0.107.0",
+    "three": "^0.137.0",
     "three-css2drender": "^1.0.0",
     "three-fbx-loader": "^1.0.3",
     "three-obj-mtl-loader": "^1.0.3",
